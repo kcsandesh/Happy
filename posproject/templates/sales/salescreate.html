@@ -1,0 +1,54 @@
+{% extends 'admintemplates/adminbase.html' %}
+{% load static %}
+{% block content %}
+	<div class="row">
+		<div class="col-md-12 table-responsive-sm">
+            <br>
+            <a href="{% url 'posapp:salescreate' %}"><button class="btn btn-lg btn-primary">Create Invoice</button></a>
+
+            <!-- <a href="{% url 'posapp:salescreate' %}" class="btn btn-primary" style="margin-left:2px;width:195px;">Create Invoice</a> -->
+            <br>           
+
+			<table class="table table-bordered">
+				<thead style="background-color: blue;color:white;text-align: center;">
+					<tr class="text-dark">
+						<th>S.N</th>
+						<th>Customer</th>
+						<th>Customer_phone</th>
+                        <th>Email</th>
+                        <th>product</th>
+                        <th>Date</th>
+                        
+				
+					</tr>	
+
+				</thead>
+				<tbody>
+                    {% for item in order %}
+                        <tr style="color: black;">
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ item.order.customer.customer }}</td>
+                            <td>{{ item.order.customer.customer_phone }}</td>
+                            <td>{{ item.order.customer.email }}</td>
+                            <td>{{ item.product.name }}</td>
+                            <td>{{ item.timestamp|date:"d M Y"  }}</td>
+
+
+
+
+                            <!-- <td>{{ forloop.counter }}</td>
+                            <td>{{ forloop.counter }}</td> -->
+
+                            
+                            
+                            
+                        </tr>	
+
+
+					{% endfor %}
+				</tbody>
+					
+			</table>
+		</div>
+    </div>
+{% endblock %}
